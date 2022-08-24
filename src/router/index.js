@@ -33,14 +33,36 @@ import Layout from '@/layout'
 export const constantRoutes = [
   {
     path: '/login',
-    component: () => import('@/views/login/index'),
+    component: () => import('@/views/user/index'),
     hidden: true
   },
-
+  {
+    path: '/register',
+    component: () => import('@/views/user/register'),
+    hidden: true
+  },
   {
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
+  },
+
+  {
+    path: '/usercenter',
+    name: 'UserCenter',
+    // hidden: true,
+    component: Layout,
+    redirect: '/UserCenter/profile',
+    key: '/UserCenter',
+    children: [
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: () => import('@/views/user/usercenter'),
+        meta: { title: '用户信息', icon: 'component', noCache: false },
+        hidden: true
+      }
+    ]
   },
 
   {
@@ -49,10 +71,31 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '报表统计',
       component: () => import('@/views/dashboard/index'),
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
+  },
+  {
+    path: '/SysConfig',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '系统配置管理',
+    meta: { title: '系统配置管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'tag',
+        name: '标签管理',
+        component: () => import('@/views/sysconfig/tag'),
+        meta: { title: '标签管理', icon: 'table' }
+      },
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
   },
 
   {

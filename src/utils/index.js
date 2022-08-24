@@ -115,3 +115,16 @@ export function param2Obj(url) {
   })
   return obj
 }
+
+export function fetchNow() {
+  var today = new Date()
+  var month = today.getMonth() + 1
+  month = month < 10 ? '0' + month : month
+  var day = today.getDate() < 10 ? '0' + today.getDate() : today.getDate()
+  var hours = today.getHours() < 10 ? '0' + today.getHours() : today.getHours()
+  var mins = today.getMinutes() < 10 ? '0' + today.getMinutes() : today.getMinutes()
+  var secs = today.getSeconds() < 10 ? '0' + today.getSeconds() : today.getSeconds()
+  var now1 = today.getFullYear() + '/' + month + '/' + day + ' ' + hours + ':' + mins + ':' + secs
+  return now1
+}
+
