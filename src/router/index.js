@@ -73,7 +73,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: '报表统计',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '报表统计', icon: 'dashboard' }
     }]
   },
   {
@@ -81,19 +81,19 @@ export const constantRoutes = [
     component: Layout,
     redirect: 'noredirect',
     name: '系统配置管理',
-    meta: { title: '系统配置管理', icon: 'el-icon-s-help' },
+    meta: { title: '系统配置管理', icon: 'thunderbolt' },
     children: [
       {
         path: 'tag',
         name: '标签管理',
         component: () => import('@/views/sysconfig/tag'),
-        meta: { title: '标签管理', icon: 'table' }
+        meta: { title: '标签管理' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: 'excutor',
+        name: '执行器管理',
+        component: () => import('@/views/sysconfig/excutor'),
+        meta: { title: '执行器管理' }
       }
     ]
   },

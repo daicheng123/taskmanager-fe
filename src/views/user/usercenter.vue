@@ -28,7 +28,7 @@
       <div class="boxing-item">
         <el-row>
           <el-col :span="4">注册时间</el-col>
-          <el-col :span="20">{{ formatCreateDate(userInfo.createdAt) }}</el-col>
+          <el-col :span="20">{{ userInfo.createdAt }}</el-col>
         </el-row>
       </div>
     </el-card>
@@ -54,9 +54,9 @@ export default {
   },
 
   methods: {
-    formatCreateDate(dateStr) {
-      return formatDateTime(dateStr)
-    },
+    // formatCreateDate(dateStr) {
+    //   return formatDateTime(dateStr)
+    // },
     async GetUserInfo() {
       this.loading = true
       await getInfo().then(res => {
