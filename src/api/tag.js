@@ -29,3 +29,10 @@ export function updateTag(data) {
     data
   })
 }
+
+export function listTagOptions() {
+  return request({
+    method: 'get',
+    url: '/v1/tags/tags_options'
+  })
+}

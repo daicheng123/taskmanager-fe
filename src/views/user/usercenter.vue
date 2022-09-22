@@ -36,7 +36,6 @@
 </template>
 <script>
 import { getInfo } from '@/api/user'
-import { formatDateTime } from '@/utils/datetransfer'
 export default {
   data() {
     return {

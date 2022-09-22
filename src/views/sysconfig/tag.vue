@@ -82,9 +82,7 @@ export default {
       dialogShow: false,
       tagsData: [],
       rules: {
-        tagName: [
-          { required: true, message: '请输入标签名称', trigger: 'blur' },
-          { min: 2, max: 50, message: '长度在3到50个字符之间', trigger: 'blur' }]
+        tagName: []
       }
     }
   },
@@ -117,7 +115,11 @@ export default {
       this.resetForm()
       this.dialogShow = true
       this.status = 'create'
-      this.rules.tagName.push({ validator: this.vaild_tagName(), trigger: 'blur' })
+      this.rules.tagName = [
+        { required: true, message: '请输入标签名称', trigger: 'blur' },
+        { min: 2, max: 50, message: '长度在3到50个字符之间', trigger: 'blur' },
+        { validator: this.vaild_tagName(), trigger: 'blur' }
+      ]
     },
     handleEdit(row) {
       this.resetForm()
@@ -125,7 +127,11 @@ export default {
       this.tagForm.id = row.id
       this.status = 'update'
       this.dialogShow = true
-      this.rules.tagName.push({ validator: this.vaild_tagName(row.id), trigger: 'blur' })
+      this.rules.tagName = [
+        { required: true, message: '请输入标签名称', trigger: 'blur' },
+        { min: 2, max: 50, message: '长度在3到50个字符之间', trigger: 'blur' },
+        { validator: this.vaild_tagName(row.id), trigger: 'blur' }
+      ]
     },
     resetForm() {
       this.tagForm = {
@@ -224,7 +230,6 @@ export default {
         if (res.code === 0) {
           this.count = res.data.count
           this.tagsData = res.data.rows
-          console.log(this.tagsData)
         }
       }).catch(err => {
         this.$message({

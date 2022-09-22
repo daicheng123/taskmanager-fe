@@ -10,14 +10,14 @@ export function checkEmailExists(query) {
 export function checkUserCodeExists(params) {
   return request({
     method: 'get',
-    url: '/v1/user/user_code/' + params.userCode
+    url: '/v1/users/user_code/' + params.userCode
   })
 }
 
 export function createUser(userForm) {
   return request({
     method: 'post',
-    url: '/v1/user/register',
+    url: '/v1/users/register',
     data: userForm
   })
 }
@@ -25,14 +25,14 @@ export function createUser(userForm) {
 export function login(data) {
   return request({
     method: 'post',
-    url: '/v1/user/login',
+    url: '/v1/users/login',
     data: data
   })
 }
 
 export function getInfo() {
   return request({
-    url: '/v1/user/user_info',
+    url: '/v1/users/user_info',
     method: 'get'
     // params: { token }
   })
@@ -40,7 +40,7 @@ export function getInfo() {
 
 export function logout() {
   return request({
-    url: '/v1/user/logout',
+    url: '/v1/users/logout',
     method: 'post'
     // parmas: { token }
   })

@@ -50,8 +50,10 @@ export const constantRoutes = [
   {
     path: '/usercenter',
     name: 'UserCenter',
-    // hidden: true,
+    hidden: true,
     component: Layout,
+    // component: () => import('@/views/routePage'),
+    meta: { title: '个人中心' },
     redirect: '/UserCenter/profile',
     key: '/UserCenter',
     children: [
@@ -69,6 +71,7 @@ export const constantRoutes = [
     path: '/',
     component: Layout,
     redirect: '/dashboard',
+    // hidden: true,
     children: [{
       path: 'dashboard',
       name: '报表统计',
@@ -79,126 +82,59 @@ export const constantRoutes = [
   {
     path: '/SysConfig',
     component: Layout,
-    redirect: 'noredirect',
+    redirect: 'noRedirect',
     name: '系统配置管理',
     meta: { title: '系统配置管理', icon: 'thunderbolt' },
     children: [
       {
         path: 'tag',
-        name: '标签管理',
+        name: '脚本标签',
         component: () => import('@/views/sysconfig/tag'),
-        meta: { title: '标签管理' }
+        meta: { title: '脚本标签' }
+      },
+      {
+        path: 'dangercmd',
+        name: '危险命令',
+        component: () => import('@/views/sysconfig/dangercmd'),
+        meta: { title: '危险命令' }
       },
       {
         path: 'excutor',
-        name: '执行器管理',
+        name: '执行器',
         component: () => import('@/views/sysconfig/excutor'),
-        meta: { title: '执行器管理' }
+        meta: { title: '执行器' }
       }
     ]
   },
-
   {
-    path: '/example',
+    path: '/TasksManager',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    name: '任务中心',
+    redirect: 'noRedirect',
+    meta: { title: '任务中心', icon: 'example' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
-      },
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
-      }
-    ]
-  },
-
-  {
-    path: '/form',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'form' }
-      }
-    ]
-  },
-
-  {
-    path: '/nested',
-    component: Layout,
-    redirect: '/nested/menu1',
-    name: 'Nested',
-    meta: {
-      title: 'Nested',
-      icon: 'nested'
-    },
-    children: [
-      {
-        path: 'menu1',
-        component: () => import('@/views/nested/menu1/index'), // Parent router-view
-        name: 'Menu1',
-        meta: { title: 'Menu1' },
+        path: 'scripts',
+        name: '操作管理',
+        redirect: 'noRedirect',
+        component: () => import('@/views/routePage'),
+        meta: { title: '操作管理' },
         children: [
           {
-            path: 'menu1-1',
-            component: () => import('@/views/nested/menu1/menu1-1'),
-            name: 'Menu1-1',
-            meta: { title: 'Menu1-1' }
+            path: 'scriptManager',
+            name: '操作脚本管理',
+            component: () => import('@/views/tasks/scripts/scriptManager'),
+            meta: { title: '操作脚本管理' },
+            key: '/TasksManager/scripts/scriptManager'
           },
           {
-            path: 'menu1-2',
-            component: () => import('@/views/nested/menu1/menu1-2'),
-            name: 'Menu1-2',
-            meta: { title: 'Menu1-2' },
-            children: [
-              {
-                path: 'menu1-2-1',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-1'),
-                name: 'Menu1-2-1',
-                meta: { title: 'Menu1-2-1' }
-              },
-              {
-                path: 'menu1-2-2',
-                component: () => import('@/views/nested/menu1/menu1-2/menu1-2-2'),
-                name: 'Menu1-2-2',
-                meta: { title: 'Menu1-2-2' }
-              }
-            ]
-          },
-          {
-            path: 'menu1-3',
-            component: () => import('@/views/nested/menu1/menu1-3'),
-            name: 'Menu1-3',
-            meta: { title: 'Menu1-3' }
+            path: 'myAudit',
+            name: '我提交的脚本审核',
+            component: () => import('@/views/tasks/audit/myaudit'),
+            meta: { title: '我提交的脚本审核' },
+            key: '/TasksManager/audit/myAudit'
           }
         ]
-      },
-      {
-        path: 'menu2',
-        component: () => import('@/views/nested/menu2/index'),
-        name: 'Menu2',
-        meta: { title: 'menu2' }
-      }
-    ]
-  },
-
-  {
-    path: 'external-link',
-    component: Layout,
-    children: [
-      {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
       }
     ]
   },
