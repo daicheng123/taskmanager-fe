@@ -62,3 +62,10 @@ export function updateExecutor(data) {
     data
   })
 }
+
+export function listExecutorOptions() {
+  return request({
+    method: 'get',
+    url: '/v1/executors/option_executor'
+  })
+}
